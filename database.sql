@@ -33,3 +33,11 @@ DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 DAY)
 CREATE USER 'web'@'172.20.0.1';
 GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'172.20.0.1';
 ALTER USER 'web'@'172.20.0.1' IDENTIFIED BY 'password';
+
+USE snippetbox;
+CREATE TABLE sessions (
+token CHAR(43) PRIMARY KEY,
+data BLOB NOT NULL,
+expiry TIMESTAMP(6) NOT NULL
+);
+CREATE INDEX sessions_expiry_idx ON sessions (expiry);
