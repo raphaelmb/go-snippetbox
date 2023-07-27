@@ -30,9 +30,9 @@ INSERT INTO snippets (title, content, created, expires) VALUES (
 );
 
 -- hardcoded ip address from container, fix later
-CREATE USER 'web'@'172.20.0.1';
-GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'172.20.0.1';
-ALTER USER 'web'@'172.20.0.1' IDENTIFIED BY 'password';
+CREATE USER 'web'@'172.24.0.1';
+GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'172.24.0.1';
+ALTER USER 'web'@'172.24.0.1' IDENTIFIED BY 'password';
 
 USE snippetbox;
 CREATE TABLE sessions (
@@ -54,6 +54,6 @@ ALTER TABLE users ADD CONSTRAINT users_uc_email UNIQUE (email);
 
 -- setup test database
 CREATE DATABASE test_snippetbox CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'test_web'@'172.20.0.1';
-GRANT CREATE, DROP, ALTER, INDEX, SELECT, INSERT, UPDATE, DELETE ON test_snippetbox.* TO 'test_web'@'172.20.0.1';
-ALTER USER 'test_web'@'172.20.0.1' IDENTIFIED BY 'pass';
+CREATE USER 'test_web'@'172.24.0.1';
+GRANT CREATE, DROP, ALTER, INDEX, SELECT, INSERT, UPDATE, DELETE ON test_snippetbox.* TO 'test_web'@'172.24.0.1';
+ALTER USER 'test_web'@'172.24.0.1' IDENTIFIED BY 'pass';
